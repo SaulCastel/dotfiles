@@ -43,17 +43,26 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    #Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    # Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
@@ -73,13 +82,26 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "e", lazy.spawn("thunar"), desc="Start the thunar file manager"),
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="execute rofi -show drun"),
-    Key([mod], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
+    Key(
+        [mod],
+        "space",
+        lazy.widget["keyboardlayout"].next_keyboard(),
+        desc="Next keyboard layout.",
+    ),
     # Backlight keys
-    Key([], "XF86MonBrightnessUp", lazy.widget['backlight'].change_backlight(backlight.ChangeDirection.UP)),
-    Key([], "XF86MonBrightnessDown", lazy.widget['backlight'].change_backlight(backlight.ChangeDirection.DOWN)),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.UP),
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.DOWN),
+    ),
     # volume keys
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
@@ -114,17 +136,17 @@ for i in groups:
 
 layouts = [
     layout.Columns(
-        #border_focus_stack=["#d75f5f", "#8f3d3d"],
+        # border_focus_stack=["#d75f5f", "#8f3d3d"],
         margin=4,
-        border_focus = 'FFE15D',
-        border_normal='#2c5380',
-        border_width = 3,
+        border_focus="FFE15D",
+        border_normal="#2c5380",
+        border_width=3,
     ),
     layout.MonadTall(
         margin=8,
-        border_focus = 'FFE15D',
-        border_normal='#2c5380',
-        border_width = 3,
+        border_focus="FFE15D",
+        border_normal="#2c5380",
+        border_width=3,
     ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -151,17 +173,17 @@ screens = [
         top=bar.Bar(
             [
                 widget.Image(
-                    filename='~/.config/qtile/eos-c.png',
-                    margin=3, 
+                    filename="~/.config/qtile/eos-c.png",
+                    margin=3,
                     mouse_callbacks={
                         #'Button1': lambda: qtile.cmd_spawn("rofi -show combi")
-                        'Button1': lazy.spawn("rofi -show drun"),
-                    }
+                        "Button1": lazy.spawn("rofi -show drun"),
+                    },
                 ),
                 widget.GroupBox(
-                    highlight_method = 'line',
+                    highlight_method="line",
                 ),
-                #widget.CurrentLayout(),
+                # widget.CurrentLayout(),
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
@@ -174,45 +196,52 @@ screens = [
                 widget.Systray(),
                 widget.CurrentLayout(),
                 widget.KeyboardLayout(
-                    background = '6D9886',
-                    configured_keyboards = ["latam","us"],
-                    display_map = {'latam':'LA', 'us':'US'},
-                    fmt = ' kbmap: {} ',
+                    background="6D9886",
+                    configured_keyboards=["latam", "us"],
+                    display_map={"latam": "LA", "us": "US"},
+                    fmt=" kbmap: {} ",
                 ),
                 widget.Clock(format=" %a %d, %Y | %H:%M:%S "),
                 widget.Backlight(
-                    backlight_name = "intel_backlight",
-                    fmt = "",
-                    padding = 0,
-                    margin = 0,
+                    backlight_name="intel_backlight",
+                    fmt="",
+                    padding=0,
+                    margin=0,
                 ),
-                volume,     #custom volume widget. Check .config/qtile/modules/widgets.py
+                volume,  # custom volume widget. Check .config/qtile/modules/widgets.py
                 widget.Battery(
-                    format = ' {percent:2.0%} ',
-                    background = 'ADE792',
-                    foreground = '000000',
-                    low_percentage = 0.2,
-                    low_background = 'FFE15D',
-                    low_foreground = '000000',
+                    format=" {percent:2.0%} ",
+                    background="ADE792",
+                    foreground="000000",
+                    low_percentage=0.2,
+                    low_background="FFE15D",
+                    low_foreground="000000",
                 ),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        wallpaper = "~/Pictures/sunflowers.jpg",
-        wallpaper_mode = "fill",
+        wallpaper="~/Pictures/sunflowers.jpg",
+        wallpaper_mode="fill",
     ),
     Screen(
-        wallpaper = "~/Pictures/sunflowers.jpg",
-        wallpaper_mode = "fill",
+        wallpaper="~/Pictures/sunflowers.jpg",
+        wallpaper_mode="fill",
     ),
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
