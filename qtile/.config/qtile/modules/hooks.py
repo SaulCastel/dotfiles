@@ -7,3 +7,8 @@ import os
 def autostart():
     home = os.path.expanduser("~/.config/qtile/autostart.sh")
     subprocess.call([home])
+
+@hook.subscribe.screen_change
+def sceenChange():
+    backgound = os.path.expanduser('~/.fehbg')
+    subprocess.call([background])
