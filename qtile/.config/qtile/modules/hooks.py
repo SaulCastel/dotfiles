@@ -9,6 +9,6 @@ def autostart():
     subprocess.call([home])
 
 @hook.subscribe.screen_change
-def sceenChange():
-    backgound = os.path.expanduser('~/.fehbg')
+def sceenChange(e):
+    background = os.path.expanduser('~/.fehbg')
     subprocess.call([background])
