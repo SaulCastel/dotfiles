@@ -84,5 +84,5 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
     # Spawn apps
     Key([mod], "e", lazy.spawn("thunar")),
-    Key([], "Print", lazy.spawn("spectacle")),
+    Key([], "Print", lazy.spawn("ksnip")),
 ]

@@ -64,7 +64,7 @@ screens = [
                 widget.TextBox(text="", padding=0, fontsize=28, foreground="#2f343f"),
                 widget.Clock(
                     # format=' %Y-%m-%d %a %I:%M %p',
-                    format=" \uf073  %a %d, %b. |  %H:%M:%S ",
+                    format=" \uf073  %a %d, %b. | \uf43a %H:%M:%S ",
                     background="#2f343f",
                     foreground="#ebdbb2",
                 ),
@@ -73,13 +73,6 @@ screens = [
                     padding=0,
                     fontsize=28,
                     foreground="#2f343f",
-                ),
-                widget.Battery(
-                    format=" {percent:2.0%} ",
-                    background="404552",
-                    low_percentage=0.2,
-                    low_background="FFE15D",
-                    low_foreground="000000",
                 ),
                 widget.TextBox(
                     text="  ",

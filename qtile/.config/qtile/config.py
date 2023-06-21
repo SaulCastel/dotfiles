@@ -15,4 +15,4 @@ cursor_warp = False
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 wmname = "LG3D"
-widget_defaults = dict(font="Cascadia Code", fontsize=13, padding=3)
+widget_defaults = dict(font="JetBrainsMono Nerd Font", fontsize=13, padding=3)

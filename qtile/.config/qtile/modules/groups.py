@@ -12,7 +12,7 @@ groups = [
         "6",
         label="",
         matches=[
-            Match(wm_class=["spectacle"]),
+            Match(wm_class=["ksnip"]),
             Match(wm_class=["pentablet"]),
         ],
     ),
