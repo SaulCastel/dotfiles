@@ -40,12 +40,6 @@ screens = [
                 ),
                 widget.Sep(),
                 widget.CurrentLayout(),
-                widget.Backlight(
-                    backlight_name="intel_backlight",
-                    fmt="",
-                    padding=0,
-                    margin=0,
-                ),
                 widget.KeyboardLayout(
                     background="2f343f",
                     configured_keyboards=["latam", "us"],
@@ -73,6 +67,23 @@ screens = [
                     padding=0,
                     fontsize=28,
                     foreground="#2f343f",
+                ),
+                widget.Backlight(
+                    backlight_name="intel_backlight",
+                    format=' 󰃝 {percent:2.0%} ',
+                    padding=0,
+                    margin=0,
+                ),
+                widget.Battery(
+                    format=" {char} {percent:2.0%} ",
+                    charge_char='󰢝',
+                    discharge_char='󱊢',
+                    full_char='󱊣',
+                    background="404552",
+                    low_percentage=0.3,
+                    low_background="F3E15D",
+                    low_foreground="000000",
+                    update_interval=15,
                 ),
                 widget.TextBox(
                     text="  ",
