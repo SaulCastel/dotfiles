@@ -40,5 +40,6 @@ floating_layout = layout.Floating(
         Match(wm_class="pentablet"),  # xppen ui
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="zoom"),
     ]
 )

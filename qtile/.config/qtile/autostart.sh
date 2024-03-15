@@ -10,5 +10,6 @@ picom & disown # --experimental-backends --vsync should prevent screen tearing o
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown # start polkit agent from GNOME
 
+nm-applet &
 ~/.screenlayout/default.sh
 ~/.fehbg

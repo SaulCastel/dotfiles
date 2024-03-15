@@ -108,7 +108,11 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {}
+  },
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
   {
@@ -228,6 +232,16 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
+  },
+  {
+    'ray-x/lsp_signature.nvim',
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts) require'lsp_signature'.setup(opts) end
+  }
 }, {})
 
 -- [[ Setting options ]]
@@ -273,6 +287,7 @@ vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
+vim.keymap.set('n', '<leader>fe', vim.cmd.Ex, { desc = '[F]ile [E]xplorer' })
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
@@ -291,6 +306,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+require 'lsp_signature'.setup({})
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -478,7 +495,8 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  intelephense = { filetypes = {'php'} },
+  emmet_language_server = { filetypes = {'html', 'css', 'php'} },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },

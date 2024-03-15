@@ -85,15 +85,6 @@ screens = [
                     low_foreground="000000",
                     update_interval=15,
                 ),
-                widget.TextBox(
-                    text="  ",
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn(
-                            os.path.expanduser("~/.config/rofi/powermenu.sh")
-                        )
-                    },
-                    foreground="#e39378",
-                ),
             ],
             24,  # height in px
             background="#404552",  # background color
